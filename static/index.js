@@ -1,5 +1,27 @@
 window.addEventListener("load", () => {
     new Container(config.wish, config.time, config.texts);
+
+    // Auto-play music logic
+    const audio = document.querySelector('.song-audio-autoplay');
+    const musicIcon = document.querySelector('img[src*="music.png"]'); // Find the music icon
+
+    function playMusic() {
+        if (audio.paused) {
+            audio.play().then(() => {
+                // Determine if we need to rotate the icon
+                if (musicIcon) musicIcon.className = 'rotateImages';
+            }).catch(error => {
+                console.log("Autoplay prevented by browser, waiting for interaction.");
+            });
+        }
+    }
+
+    // Try immediately
+    playMusic();
+
+    // Try on any interaction (standard fix for browser policies)
+    document.addEventListener('click', playMusic, { once: true });
+    document.addEventListener('touchstart', playMusic, { once: true });
 });
 
 function Container(wish, time, texts) {
