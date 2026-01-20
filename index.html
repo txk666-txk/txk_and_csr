@@ -105,7 +105,26 @@
 </div>
 
 
-<script src="config.js"></script>
-<script src="static/index.js"></script>
+    <!-- Love Gallery Structure -->
+    <div id="gallery-trigger" class="gallery-trigger">
+        <div class="folder-icon">
+             <div class="folder-tab"></div>
+             <div class="folder-body">
+                 <span class="heart-symbol">❤</span>
+             </div>
+        </div>
+        <p class="trigger-text"></p>
+    </div>
+
+    <div id="gallery-overlay" class="gallery-overlay hidden">
+        <div class="gallery-close" onclick="closeGallery()">×</div>
+        <div class="gallery-content" id="gallery-content">
+            <!-- Photos will be injected here -->
+        </div>
+    </div>
+
+    <script src="config.js"></script>
+    <script src="static/index.js"></script>
+    <script src="static/gallery.js"></script>
 </body>
 </html>
