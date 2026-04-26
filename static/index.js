@@ -1,25 +1,20 @@
 window.addEventListener("load", () => {
     new Container(config.wish, config.time, config.texts);
 
-    // Auto-play music logic
     const audio = document.querySelector('.song-audio-autoplay');
-    const musicIcon = document.querySelector('img[src*="music.png"]'); // Find the music icon
+    const musicIcon = document.querySelector('.music-toggle');
 
     function playMusic() {
-        if (audio.paused) {
-            audio.play().then(() => {
-                // Determine if we need to rotate the icon
-                if (musicIcon) musicIcon.className = 'rotateImages';
-            }).catch(error => {
-                console.log("Autoplay prevented by browser, waiting for interaction.");
-            });
-        }
+        if (!audio || !musicIcon || !audio.paused) return;
+        audio.play().then(() => {
+            musicIcon.classList.add('rotateImages');
+        }).catch(() => {
+            // Browsers may block autoplay until the first gesture.
+        });
     }
 
-    // Try immediately
     playMusic();
 
-    // Try on any interaction (standard fix for browser policies)
     document.addEventListener('click', playMusic, { once: true });
     document.addEventListener('touchstart', playMusic, { once: true });
 });
@@ -44,19 +39,20 @@ function Container(wish, time, texts) {
 
 Container.prototype = {
     renderTexts(texts) {
-        let div = document.createElement("div");
+        const div = document.createElement("div");
         texts.forEach(item => {
-            let d = document.createElement("div");
+            const d = document.createElement("div");
             d.innerHTML = item;
             div.appendChild(d);
-        })
-        document.getElementById("marquee").innerHTML = div.innerHTML;
+        });
+        const marquee = document.getElementById("marquee");
+        if (marquee) marquee.innerHTML = div.innerHTML;
     },
     finalText() {
-        return this.text || "";
+        return this.finalText || "";
     },
     beginDate() {
-        return this.time;
+        return this.beginDate;
     },
     days: function () {
         if (this.passedSeconds === 0) return "";

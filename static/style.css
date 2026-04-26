@@ -1,6 +1,24 @@
 body{
-    background: #fe909b;
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(255, 255, 255, 0.28), transparent 35%),
+        linear-gradient(180deg, #ffb7c5 0%, #ff7f98 55%, #ff5978 100%);
+    font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #fff;
+    overflow-x: hidden;
 }
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px);
+    background-size: 28px 28px;
+    opacity: 0.18;
+    pointer-events: none;
+}
+
 .pass-time{
     color:white;
     font-size:12px;
@@ -17,6 +35,157 @@ div#content {
     height: 800px;
     clear: both;
     overflow: hidden;
+}
+
+.music-toggle {
+    position: fixed;
+    z-index: 10001;
+    top: 18px;
+    right: 18px;
+    width: 54px;
+    height: 54px;
+    cursor: pointer;
+    filter: drop-shadow(0 10px 20px rgba(101, 16, 48, 0.25));
+    transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.08);
+    filter: drop-shadow(0 12px 24px rgba(101, 16, 48, 0.32));
+}
+
+.scene-glow {
+    position: fixed;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.38;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.scene-glow-left {
+    top: -80px;
+    left: -80px;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.scene-glow-right {
+    right: -120px;
+    bottom: 80px;
+    background: rgba(255, 180, 205, 0.8);
+}
+
+.floating-hearts {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.floating-hearts span {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.55);
+    font-size: 20px;
+    animation: floatHeart 10s linear infinite;
+}
+
+.floating-hearts span:nth-child(1) { left: 10%; top: 80%; animation-duration: 12s; }
+.floating-hearts span:nth-child(2) { left: 25%; top: 90%; animation-duration: 14s; animation-delay: 1s; }
+.floating-hearts span:nth-child(3) { left: 50%; top: 85%; animation-duration: 11s; animation-delay: 2s; }
+.floating-hearts span:nth-child(4) { left: 72%; top: 88%; animation-duration: 13s; animation-delay: 0.5s; }
+.floating-hearts span:nth-child(5) { left: 88%; top: 92%; animation-duration: 15s; animation-delay: 1.5s; }
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) scale(0.9); opacity: 0; }
+    10% { opacity: 0.55; }
+    100% { transform: translateY(-120vh) scale(1.25); opacity: 0; }
+}
+
+.love-frame {
+    position: relative;
+    z-index: 2;
+    width: min(92vw, 540px);
+    margin: 0 auto;
+    padding: 24px 0 80px;
+}
+
+.love-hero {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 18px 50px rgba(120, 16, 56, 0.18);
+    backdrop-filter: blur(12px);
+    border-radius: 30px;
+    padding: 22px 18px 20px;
+    margin-bottom: 20px;
+}
+
+.hero-kicker {
+    margin: 0 0 12px;
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.time-counter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 12px 0 0;
+}
+
+.time-pill {
+    min-width: 72px;
+    padding: 10px 12px;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.time-pill span {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.time-pill small {
+    font-size: 11px;
+    opacity: 0.9;
+    letter-spacing: 0.08em;
+}
+
+.love-message-panel {
+    margin-top: 16px;
+    padding: 14px 16px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.love-message {
+    color: rgba(255,255,255,0.96);
+    height: 108px;
+    line-height: 1.8;
+    font-size: 13px;
+    text-align: center;
+}
+
+.memory-canvas {
+    position: relative;
+    min-height: 820px;
+    overflow: hidden;
+    border-radius: 34px;
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 18px 44px rgba(120, 16, 56, 0.16);
+    backdrop-filter: blur(8px);
 }
 
 
@@ -530,15 +699,15 @@ div#content {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    width: 60px;
-    height: 60px;
+    width: 64px;
+    height: 64px;
     cursor: pointer;
     z-index: 10000;
     transition: transform 0.3s ease;
 }
 
 .gallery-trigger:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 /* Folder Icon Design */
@@ -552,11 +721,10 @@ div#content {
     position: absolute;
     top: 5px;
     left: 0;
-    width: 40%;
+    width: 42%;
     height: 10px;
-    background: #ffecf0;
     border-radius: 5px 5px 0 0;
-    background: linear-gradient(to bottom, #ffe6eb 0%, #ffc2cd 100%);
+    background: linear-gradient(to bottom, #fff7f9 0%, #ffd1dc 100%);
 }
 
 .folder-body {
@@ -564,14 +732,13 @@ div#content {
     top: 15px;
     left: 0;
     width: 100%;
-    height: 45px;
-    background: #ffc2cd;
-    border-radius: 0 5px 5px 5px;
-    box-shadow: 2px 5px 10px rgba(0,0,0,0.1);
+    height: 47px;
+    border-radius: 0 16px 16px 16px;
+    box-shadow: 0 12px 25px rgba(80, 10, 40, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(to bottom, #ffc2cd 0%, #ff8fa3 100%);
+    background: linear-gradient(to bottom, #ffd1dc 0%, #ff8fb3 100%);
 }
 
 .heart-symbol {
@@ -582,13 +749,13 @@ div#content {
 
 .trigger-text {
     position: absolute;
-    bottom: -25px;
+    bottom: -24px;
     width: 120%;
     left: -10%;
     text-align: center;
     color: #fff;
     font-size: 12px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.22);
 }
 
 @keyframes heartBeat {
@@ -606,8 +773,8 @@ div#content {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(255, 143, 163, 0.85); /* Romantic pink overlay */
-    backdrop-filter: blur(10px);
+    background: rgba(255, 101, 145, 0.72);
+    backdrop-filter: blur(14px);
     z-index: 20000;
     display: flex;
     justify-content: center;
@@ -638,8 +805,8 @@ div#content {
 }
 
 .gallery-content {
-    width: 90%;
-    height: 80%;
+    width: min(92vw, 1000px);
+    height: 82%;
     overflow-y: auto;
     display: flex;
     flex-wrap: wrap;
@@ -659,17 +826,31 @@ div#content {
 }
 
 .gallery-photo {
-    max-width: 30%; /* 3 per row on desktop */
+    max-width: 30%;
     max-height: 300px;
     object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    border: 3px solid white;
-    transition: transform 0.3s ease;
+    border-radius: 16px;
+    box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+    border: 3px solid rgba(255,255,255,0.92);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-photo:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 16px 30px rgba(0,0,0,0.25);
 }
 
 @media (max-width: 600px) {
     .gallery-photo {
-        max-width: 90%; /* 1 per row on mobile */
+        max-width: 90%;
+    }
+
+    .love-frame {
+        width: 94vw;
+        padding-top: 18px;
+    }
+
+    .memory-canvas {
+        min-height: 760px;
     }
 }
