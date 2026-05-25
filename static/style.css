@@ -2,8 +2,9 @@ body{
     margin: 0;
     min-height: 100vh;
     background:
-        radial-gradient(circle at top, rgba(255, 255, 255, 0.28), transparent 35%),
-        linear-gradient(180deg, #ffb7c5 0%, #ff7f98 55%, #ff5978 100%);
+        radial-gradient(circle at 20% 15%, rgba(255, 228, 236, 0.18), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(255, 209, 220, 0.12), transparent 24%),
+        linear-gradient(180deg, #1b0f16 0%, #3a1624 45%, #5d2033 100%);
     font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     color: #fff;
     overflow-x: hidden;
@@ -13,9 +14,11 @@ body::before {
     content: "";
     position: fixed;
     inset: 0;
-    background-image: radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px);
-    background-size: 28px 28px;
-    opacity: 0.18;
+    background-image:
+        radial-gradient(rgba(255,255,255,0.09) 1px, transparent 1px),
+        linear-gradient(180deg, rgba(255,255,255,0.03), rgba(0,0,0,0.12));
+    background-size: 28px 28px, 100% 100%;
+    opacity: 0.22;
     pointer-events: none;
 }
 
@@ -68,13 +71,13 @@ div#content {
 .scene-glow-left {
     top: -80px;
     left: -80px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 210, 226, 0.55);
 }
 
 .scene-glow-right {
     right: -120px;
     bottom: 80px;
-    background: rgba(255, 180, 205, 0.8);
+    background: rgba(181, 92, 120, 0.48);
 }
 
 .floating-hearts {
@@ -87,7 +90,7 @@ div#content {
 
 .floating-hearts span {
     position: absolute;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255, 235, 240, 0.32);
     font-size: 20px;
     animation: floatHeart 10s linear infinite;
 }
@@ -131,6 +134,36 @@ div#content {
     inset: 0;
     background: radial-gradient(circle at top, rgba(255,255,255,0.3), transparent 45%);
     pointer-events: none;
+}
+
+.hero-portrait-wrap {
+    position: relative;
+    margin: 18px auto 12px;
+    max-width: 380px;
+}
+
+.hero-portrait {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,0.22);
+    box-shadow: 0 16px 34px rgba(22, 5, 12, 0.34);
+    transform: rotate(-1.2deg);
+    background: rgba(255,255,255,0.08);
+}
+
+.hero-portrait img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.hero-quote {
+    margin: 14px 0 0;
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.88);
+    letter-spacing: 0.06em;
 }
 
 .hero-kicker {
