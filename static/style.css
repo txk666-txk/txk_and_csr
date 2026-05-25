@@ -8,6 +8,7 @@ body{
     font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
     color: #fff;
     overflow-x: hidden;
+    position: relative;
 }
 
 body::before {
@@ -20,6 +21,15 @@ body::before {
     background-size: 28px 28px, 100% 100%;
     opacity: 0.22;
     pointer-events: none;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at center, transparent 46%, rgba(20, 5, 10, 0.18) 100%);
+    mix-blend-mode: soft-light;
 }
 
 .pass-time{
@@ -126,6 +136,14 @@ div#content {
     margin-bottom: 20px;
     position: relative;
     overflow: hidden;
+}
+
+.love-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 40%, rgba(255,255,255,0.04));
+    pointer-events: none;
 }
 
 .love-hero::before {
@@ -288,6 +306,7 @@ div#content {
     height: 100%;
     object-fit: cover;
     transition: transform 0.5s ease, filter 0.5s ease;
+    filter: saturate(0.96) contrast(1.04) brightness(0.95);
 }
 
 .story-photo::after {
