@@ -57,15 +57,19 @@ function loadPhotos(container) {
 
     sources.forEach((src, index) => {
         const card = createPhotoCard(src, index);
+        const columnOffset = index % 3;
+        const delay = 120 + (index * 55);
+        const drift = (columnOffset - 1) * 18;
+        const scale = 0.94 + (index % 4) * 0.015;
+
         card.style.opacity = '0';
-        card.style.transform = 'translateY(18px) scale(0.98)';
+        card.style.transform = `translateY(-120px) translateX(${drift}px) rotate(${(index % 2 === 0 ? -1 : 1) * (index % 6)}deg) scale(${scale})`;
         container.appendChild(card);
 
-        const delay = 120 + (index * 40);
         setTimeout(() => {
-            card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+            card.style.transition = 'opacity 1.2s ease, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1)';
             card.style.opacity = '1';
-            card.style.transform = 'translateY(0) scale(1)';
+            card.style.transform = `translateY(0) translateX(0) rotate(0deg) scale(1)`;
         }, delay);
     });
 }

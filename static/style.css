@@ -733,11 +733,9 @@ div#content {
     width: min(92vw, 1100px);
     height: 84%;
     overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     padding: 24px;
-    gap: 18px;
+    column-count: 3;
+    column-gap: 18px;
 }
 
 /* Scrollbar for gallery */
@@ -751,14 +749,18 @@ div#content {
 
 .gallery-card {
     position: relative;
-    margin: 0;
+    display: inline-block;
+    width: 100%;
+    margin: 0 0 18px;
     padding: 0;
     border-radius: 20px;
     overflow: hidden;
     background: rgba(255, 255, 255, 0.12);
     border: 1px solid rgba(255, 255, 255, 0.22);
     box-shadow: 0 14px 34px rgba(65, 10, 34, 0.25);
-    width: min(100%, 920px);
+    break-inside: avoid;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
 }
 
 .gallery-card::after {
@@ -773,9 +775,8 @@ div#content {
     width: 100%;
     height: auto;
     display: block;
-    object-fit: contain;
+    object-fit: cover;
     background: rgba(10, 10, 10, 0.18);
-    max-height: 78vh;
 }
 
 .gallery-card figcaption {
