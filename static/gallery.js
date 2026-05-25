@@ -58,14 +58,14 @@ function loadPhotos(container) {
     sources.forEach((src, index) => {
         const card = createPhotoCard(src, index);
         card.style.opacity = '0';
-        card.style.transform = 'translateY(18px) scale(0.98) rotate(' + ((index % 2 === 0 ? -1 : 1) * (index % 5)) + 'deg)';
+        card.style.transform = 'translateY(18px) scale(0.98)';
         container.appendChild(card);
 
-        const delay = 180 + (index * 110);
+        const delay = 120 + (index * 40);
         setTimeout(() => {
-            card.style.transition = 'opacity 1.1s ease, transform 1.1s ease';
+            card.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
             card.style.opacity = '1';
-            card.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+            card.style.transform = 'translateY(0) scale(1)';
         }, delay);
     });
 }

@@ -257,6 +257,26 @@ div#content {
     text-align: center;
 }
 
+.support-note {
+    margin-top: 18px;
+    padding: 16px 18px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    text-align: left;
+}
+
+.support-note p {
+    margin: 0 0 10px;
+    font-size: 13px;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.9);
+}
+
+.support-note p:last-child {
+    margin-bottom: 0;
+}
+
 .memory-canvas {
     position: relative;
     overflow: hidden;
@@ -755,6 +775,7 @@ div#content {
     display: block;
     object-fit: contain;
     background: rgba(10, 10, 10, 0.18);
+    max-height: 78vh;
 }
 
 .gallery-card figcaption {
