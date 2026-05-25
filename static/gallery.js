@@ -21,11 +21,25 @@ function openGallery() {
     const container = document.getElementById('gallery-content');
     overlay.classList.remove('hidden');
     overlay.classList.add('visible');
-
-    // Clear previous content to avoid duplicates if re-opened (optional, or keep them)
     container.innerHTML = '';
-
     loadPhotos(container);
+}
+
+function createPhotoCard(src, index) {
+    const card = document.createElement('figure');
+    card.className = 'gallery-card';
+
+    const img = new Image();
+    img.src = src;
+    img.alt = `memory ${index + 1}`;
+    img.className = 'gallery-photo';
+
+    const caption = document.createElement('figcaption');
+    caption.textContent = `回忆 ${String(index + 1).padStart(2, '0')}`;
+
+    card.appendChild(img);
+    card.appendChild(caption);
+    return card;
 }
 
 function closeGallery() {
@@ -37,39 +51,21 @@ function closeGallery() {
 }
 
 function loadPhotos(container) {
+    const featured = (config.gallery && config.gallery.featured_photos) ? config.gallery.featured_photos : [];
     const maxPhotos = config.gallery && config.gallery.max_photos ? config.gallery.max_photos : 50;
+    const sources = featured.length ? featured : Array.from({ length: maxPhotos }, (_, i) => `./static/photos/${i + 1}.jpg`);
 
-    // Attempt to load photos from 1 to maxPhotos
-    // Strategy: We create an Image object for each index. If it loads, we append it.
-    // If it fails, we assume that photo doesn't exist.
+    sources.forEach((src, index) => {
+        const card = createPhotoCard(src, index);
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(18px) scale(0.98) rotate(' + ((index % 2 === 0 ? -1 : 1) * (index % 5)) + 'deg)';
+        container.appendChild(card);
 
-    // To make it appear "slowly and romantically", we will append them but set them to opacity 0 first,
-    // then animate them in with random delays.
-
-    let loadedCount = 0;
-
-    for (let i = 1; i <= maxPhotos; i++) {
-        const img = new Image();
-        img.src = `./static/photos/${i}.jpg`;
-        img.className = 'gallery-photo';
-        img.style.opacity = '0'; // Start hidden
-
-        img.onload = () => {
-            // Randomize position slightly or just grid? 
-            // Let's do a masonry-like float or just a nice flex grid.
-            container.appendChild(img);
-
-            // Random delay for fade in
-            const delay = Math.random() * 2000 + 500; // 0.5s to 2.5s delay
-            setTimeout(() => {
-                img.style.transition = 'opacity 1.5s ease, transform 1.5s ease';
-                img.style.opacity = '1';
-                img.style.transform = 'scale(1)';
-            }, delay + (i * 100)); // Staggered start plus random
-        };
-
-        img.onerror = () => {
-            // Image doesn't exist, ignore
-        };
-    }
+        const delay = 180 + (index * 110);
+        setTimeout(() => {
+            card.style.transition = 'opacity 1.1s ease, transform 1.1s ease';
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0) scale(1) rotate(0deg)';
+        }, delay);
+    });
 }

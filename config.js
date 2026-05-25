@@ -1,26 +1,50 @@
 // 霸都丶傲天 2019年12月24日
 
 var config = {
-    // 句子的长度可以任意， 你可以写十句话， 二十句话都可以
-    // 每句话尽量不要超过15个字,不然展示效果可能不太好
-    texts: [//这里,每句话结尾的最后一个逗号必须是英文的哦!! 很重要哦!!
-        "心爱的陈思如妹妹",  // 同上...
-        "我现在好想你",      //这里,每句话结尾的最后一个逗号必须是英文的哦!! 很重要哦!!
-        "今天我的身体好不舒服",
-        "要是身边有你就好了",      //这里,每句话结尾的最后一个逗号必须是英文的哦!! 很重要哦!!
-        "呜呜呜呜",
-        "快点好起来吧",      //这里,每句话结尾的最后一个逗号必须是英文的哦!! 很重要哦!!
-        "我爱你呀陈思如~",
-        "老婆老婆老婆老婆",      //这里,每句话结尾的最后一个逗号必须是英文的哦!! 很重要哦!!
-        "下次再见哦",
+    texts: [
+        "给你的一封影像情书",
+        "把这一年最温柔的片段",
+        "都收进这一页里",
+        "每一张照片",
+        "都像电影里的慢镜头",
+        "而你是我最想反复回放的那一帧",
+        "纪念日快乐",
+        "2025.11.23",
     ],
-    wish: "鑫鑫&&小如相爱了",  //这里,每句话结尾的最后一个逗号必须是英文的哦!! 很重要哦!!
-    // 时间的格式很重要哦，一定要是下面这个格式!!
-    // 年年年年-月月-日日 时时:分分:秒秒
-    time: "2025-11-23 21:30:0",    //这里,每句话结尾的最后一个逗号必须是英文的哦!! 很重要哦!!
-    // 相册配置
+    wish: "我们的纪念日", 
+    time: "2025-11-23 00:00:00",
     gallery: {
-        max_photos: 50, // 最大扫描照片数量 / Maximum photos to scan
-        folder_label: "我们的点滴", // 文件夹 UI 上显示的文字 / Folder label
+        folder_label: "打开影像回忆",
+        featured_photos: [
+            "./static/photos/1.爱意/psc.jpg",
+            "./static/photos/1.爱意/1.jpg",
+            "./static/photos/1.爱意/2.jpg",
+            "./static/photos/1.爱意/3.jpg",
+            "./static/photos/1.爱意/4.jpg",
+            "./static/photos/1.爱意/5.jpg",
+            "./static/photos/1.爱意/6.jpg",
+            "./static/photos/1.爱意/7.jpg",
+            "./static/photos/1.爱意/8.jpg",
+            "./static/photos/1.爱意/9.jpg",
+            "./static/photos/1.爱意/10.jpg",
+            "./static/photos/1.爱意/11.jpg",
+            "./static/photos/1.爱意/13.jpg",
+            "./static/photos/1.爱意/14.jpg",
+            "./static/photos/2.假期/psc.jpg",
+            "./static/photos/2.假期/psc (1).jpg",
+            "./static/photos/2.假期/psc (2).jpg",
+            "./static/photos/2.假期/psc.webp",
+            "./static/photos/2.假期/微信图片_20260126145625_393_5.jpg",
+            "./static/photos/2.假期/微信图片_20260126145626_394_5.jpg",
+            "./static/photos/3.绍兴/psc.jpg",
+            "./static/photos/3.绍兴/psc (1).jpg",
+            "./static/photos/3.绍兴/psc (2).jpg",
+            "./static/photos/3.绍兴/psc (3).jpg",
+            "./static/photos/3.绍兴/psc (4).jpg",
+            "./static/photos/3.绍兴/psc (5).jpg",
+            "./static/photos/3.绍兴/psc (6).jpg",
+            "./static/photos/3.绍兴/psc (7).jpg",
+            "./static/photos/3.绍兴/psc (8).jpg"
+        ]
     }
 };
